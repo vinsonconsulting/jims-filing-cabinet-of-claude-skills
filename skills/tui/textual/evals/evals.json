@@ -1,0 +1,90 @@
+{
+  "skill_name": "textual",
+  "evals": [
+    {
+      "id": "constrained-layout",
+      "prompt": "Textual app: header/footer docked top and bottom, a fixed-width left sidebar, and a main area filling the rest. Use Textual CSS.",
+      "rubric": [
+        "compose() yields Header/Footer (auto-dock) and/or containers from textual.containers",
+        "TCSS: dock: top/bottom for edges, width: <n> for the fixed sidebar, width: 1fr for the main area",
+        "Horizontal/VerticalScroll containers wrap the body, not manual placement",
+        "no self.view.dock()/edge= (pre-CSS 0.x layout)",
+        "no manual coordinate math; does not claim a grid without layout: grid + grid-size"
+      ]
+    },
+    {
+      "id": "stateful-scrollable-list",
+      "prompt": "A scrollable, selectable list; selecting an item shows a detail view. Use the right built-in widget.",
+      "rubric": [
+        "uses a built-in (ListView/OptionList/DataTable), not hand-rolled scrolling",
+        "handles the selection message (ListView.Selected / OptionList.OptionSelected / DataTable.RowSelected)",
+        "@on or on_* bound to the correct message class, not polling",
+        "updates the detail via reactive/refresh (or recompose), not by rebuilding the whole list",
+        "no removed/renamed selection events"
+      ]
+    },
+    {
+      "id": "scrollback-model",
+      "prompt": "A live, appendable, auto-scrolling log of colored output.",
+      "rubric": [
+        "RichLog.write() (or Log for fast plain text)",
+        "auto_scroll=True, or VerticalScroll + .anchor(), to stick to the bottom",
+        "markup/highlight set appropriately for colored output",
+        "no TextLog (it was renamed to RichLog)",
+        "does not concatenate a growing string into a Static; does not block the loop while writing"
+      ]
+    },
+    {
+      "id": "streaming-viewport",
+      "prompt": "Stream tokens from an async LLM client into the UI, rendering markdown as it arrives, pinned to the bottom.",
+      "rubric": [
+        "runs in a @work async worker so the event loop never blocks",
+        "Markdown.get_stream(widget) (classmethod) with await stream.write(chunk) and await stream.stop()",
+        "container.anchor() (or auto_scroll) keeps the view at the bottom",
+        "no time.sleep/blocking calls in a handler; no bare @work on a sync fn (needs thread=True)",
+        "no remove-and-remount Markdown per token; thread workers touch the UI only via call_from_thread"
+      ]
+    },
+    {
+      "id": "custom-stateful-widget",
+      "prompt": "A custom widget with a reactive attribute that posts a custom message when the attribute changes.",
+      "rubric": [
+        "subclasses Widget; implements render() (leaf) or compose() (compound), not both",
+        "reactive() (lowercase) with a watch_ method; not Reactive(...) to declare state",
+        "nested Message subclass posted via self.post_message(...)",
+        "no in-place reactive mutation expecting watch_ to fire (reassign or mutate_reactive)",
+        "posts a message instead of calling a parent method directly"
+      ]
+    },
+    {
+      "id": "text-wrapping-unicode",
+      "prompt": "Display user-provided text containing CJK characters, emoji, and square brackets safely: wrapped, with no markup injection.",
+      "rubric": [
+        "Content.from_markup(template, var=value), or markup=False / escape() for untrusted text",
+        "relies on Textual/Rich cell width (cell_len) for CJK/emoji, not len()/char count",
+        "wrapping via CSS or RichLog(wrap=True) with a width set",
+        "no f-string of untrusted input into content markup",
+        "does not assume one character equals one cell"
+      ]
+    },
+    {
+      "id": "lifecycle-hygiene",
+      "prompt": "An app with correct startup, a background task, clean teardown, and error handling that doesn't crash the UI.",
+      "rubric": [
+        "on_mount/on_ready used correctly; widgets queried after mount, not in __init__/compose",
+        "background work via @work (auto-cancelled on exit), not manual thread management",
+        "App().run() or run_async()",
+        "handles worker errors (worker state / exit_on_error); does not silently swallow exceptions and hang",
+        "does not block the event loop in a handler"
+      ]
+    },
+    {
+      "id": "reject-stale-patterns",
+      "prompt": "Regression check: generated code must not contain outdated pre-1.0 / 0.x Textual patterns; modernize to current 8.x.",
+      "rubric": [
+        "grep finds none of: TextLog (-> RichLog); bare @work on a sync def (-> @work(thread=True)); in-place reactive mutation expecting a watcher (-> reassign / mutate_reactive); Reactive(...) to declare state (-> reactive()/var()); self.view.dock()/edge= (-> TCSS dock); Static(renderable=)/.renderable (-> content); Select.BLANK as the empty value (-> Select.NULL); md.get_stream() instance call or unawaited stream.write/stop (-> Markdown.get_stream(widget) + await); remove-and-remount Markdown per token (-> get_stream); time.sleep/blocking requests in a handler (-> @work)",
+        "does NOT flag current, correct code: events.Load/on_load, Reactive[int] as a type annotation, var(...), Select.NULL, @work(thread=True), call_from_thread, mutate_reactive, push_screen_wait"
+      ]
+    }
+  ]
+}
