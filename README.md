@@ -1,26 +1,50 @@
-# Jim's Filing Cabinet of Claude Skills
+```
+╭──────────────────────────────────────────────╮
+│                                              │
+│   █████  █   █  █████  █      █      █████   │
+│   █      █  █     █    █      █      █       │
+│   █████  ███      █    █      █      █████   │
+│       █  █  █     █    █      █          █   │
+│   █████  █   █  █████  █████  █████  █████   │
+│                                              │
+│   jim's filing cabinet of claude skills      │
+│                                              │
+╰──────────────────────────────────────────────╯
+```
 
-A filing cabinet for skills: small, self-contained capability folders that an LLM
-(Claude in particular) loads on demand. Each skill is a directory under `skills/`
-with a `SKILL.md` and whatever scripts, references, or assets it needs.
-
-Built to be Claude-optimized and plainly usable anywhere. Clone the repo, copy the
-folder you want, done.
+Small, self-contained skills a model loads on demand. Clone, copy a folder, done.
 
 [![validate](https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/actions/workflows/validate.yml)
-![license](https://img.shields.io/badge/license-MIT-blue)
+[![license: MIT](https://img.shields.io/badge/license-MIT-2b7489)](LICENSE)
+![last commit](https://img.shields.io/github/last-commit/vinsonconsulting/jims-filing-cabinet-of-claude-skills)
+<!-- SKILLS-COUNT:START -->
+![6 skills](https://img.shields.io/badge/skills-6-2b7489)
+<!-- SKILLS-COUNT:END -->
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-2b7489)](CONTRIBUTING.md)
 
-## Layout
+## What this is
 
-```
-skills/<category>/<skill-name>/SKILL.md
-```
+A filing cabinet of Claude skills. Each one is a small folder with a `SKILL.md`
+and whatever scripts, references, or assets it needs. Claude reads the description
+to decide when a skill applies, then follows the instructions inside. The skills
+are written for Claude and stay portable, so you can drop a folder into your own
+setup and it works.
 
-`SKILL.md` carries YAML frontmatter with a `name` and a `description`. The
-description is what a model reads to decide whether to load the skill, so keep it
-specific about when to use it, not just what it does.
+## Using a skill
 
-## Skills
+A skill is the folder that holds `SKILL.md`. Take the folder, not the category
+above it.
+
+**Claude Code.** Copy the skill folder into a place Claude Code reads skills, such
+as `~/.claude/skills/` for yourself or `.claude/skills/` inside a project. Claude
+loads each skill's `name` and `description`, then pulls in the body when the
+description matches what you are doing.
+
+**Claude in the browser (Chat and Projects).** Add the `SKILL.md`, plus any files
+it points to, to a Project's knowledge, or paste it into a conversation. The
+description is the part that tells Claude when the steps apply, so keep it.
+
+## What's inside
 
 <!-- SKILLS-INDEX:START -->
 
@@ -42,28 +66,36 @@ specific about when to use it, not just what it does.
 
 <!-- SKILLS-INDEX:END -->
 
-## Add a skill
+The table above is generated from the skill folders by `make index`. Do not edit
+between the markers by hand.
 
-1. Copy the template: `cp -r skills/_TEMPLATE skills/<category>/<your-skill>`
-2. Edit `SKILL.md`. Set `name` to match the folder, write a description that says
-   when to use it.
-3. Add supporting files in the skill folder (`scripts/`, `reference/`, `assets/`).
-4. Regenerate the index and lint: `make check`.
-5. Commit. CI runs the same checks.
+## Layout
 
-## Commands
+```
+skills/<category>/<skill-name>/
+  SKILL.md            # required: frontmatter (name + description) + instructions
+  reference/          # optional: docs the skill points to
+  scripts/            # optional: helper scripts the skill runs
+  assets/             # optional: templates, fonts, samples
+```
+
+The `description` in the frontmatter is what a model matches against to decide
+whether to load the skill, so write it about when to use the skill, not only what
+it does. Folders under `skills/` whose name starts with `_` (like `_TEMPLATE`) are
+ignored by the tooling.
+
+## Working on the cabinet
 
 | Command | What it does |
 | --- | --- |
-| `make lint` | Validate every `SKILL.md` |
-| `make index` | Rewrite the Skills table above |
-| `make check` | Lint, then verify the index is current (what CI runs) |
+| `make lint` | Validate every `SKILL.md`: frontmatter, layout, reference links, trigger language |
+| `make index` | Rewrite the skills table and the count badge above |
+| `make check` | Lint, then verify the table and badge are current. This is what CI runs |
 
-## Conventions
-
-Folder names and skill `name` values are lowercase slugs. Anything under `skills/`
-whose name starts with `_` (like `_TEMPLATE`) is ignored by the tooling. No secrets
-in any skill: reference where they live instead.
+Start a new skill with `cp -r skills/_TEMPLATE skills/<category>/<name>`, edit the
+`SKILL.md`, then run `make check`. CI (`.github/workflows/validate.yml`) runs the
+same check, so a stale index or a lint failure fails the build. More detail lives
+in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 

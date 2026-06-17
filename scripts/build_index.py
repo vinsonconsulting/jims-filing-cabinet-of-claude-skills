@@ -3,7 +3,9 @@
 
 Walks skills/ for SKILL.md files, reads `name` and `description` from the
 frontmatter, and writes a Markdown table grouped by top-level category between
-the SKILLS-INDEX markers in README.md.
+the SKILLS-INDEX markers in README.md. If the README also carries SKILLS-COUNT
+markers, the skills-count badge between them is kept in sync too, so the count
+can't go stale silently: `--check` (and therefore CI) fails when it drifts.
 
 Usage:
   python3 scripts/build_index.py            # write the index into README.md
@@ -20,6 +22,10 @@ SKILLS_DIR = ROOT / "skills"
 README = ROOT / "README.md"
 START = "<!-- SKILLS-INDEX:START -->"
 END = "<!-- SKILLS-INDEX:END -->"
+COUNT_START = "<!-- SKILLS-COUNT:START -->"
+COUNT_END = "<!-- SKILLS-COUNT:END -->"
+# Badge color (shields.io). Keep in step with the README badge row.
+COUNT_COLOR = "2b7489"
 
 
 def discover() -> list[tuple[str, str, str, str]]:
@@ -35,8 +41,7 @@ def discover() -> list[tuple[str, str, str, str]]:
     return records
 
 
-def render_index() -> str:
-    rows = discover()
+def render_index(rows: list[tuple[str, str, str, str]]) -> str:
     if not rows:
         return "_No skills yet. Add one under `skills/<category>/<name>/SKILL.md`._"
     by_cat: dict[str, list[tuple[str, str, str]]] = {}
@@ -54,30 +59,48 @@ def render_index() -> str:
     return "\n".join(out).rstrip() + "\n"
 
 
-def inject(readme_text: str, index_md: str) -> str:
-    if START not in readme_text or END not in readme_text:
-        raise SystemExit(
-            "README.md is missing the index markers. Add these two lines "
-            f"where the index should go:\n  {START}\n  {END}"
-        )
-    pre = readme_text.split(START)[0]
-    post = readme_text.split(END, 1)[1]
-    return f"{pre}{START}\n\n{index_md}\n{END}{post}"
+def render_count_badge(n: int) -> str:
+    """A static shields.io badge for the live skill count."""
+    label = "skill" if n == 1 else "skills"
+    return f"![{n} {label}](https://img.shields.io/badge/skills-{n}-{COUNT_COLOR})"
+
+
+def replace_between(text: str, start: str, end: str, payload: str, *, required: bool) -> str:
+    """Swap the content between `start` and `end` markers for `payload`.
+
+    Markers are kept on their own lines with the payload between them. When the
+    markers are absent, raise (if required) or return the text unchanged.
+    """
+    if start not in text or end not in text:
+        if required:
+            raise SystemExit(
+                "README.md is missing the index markers. Add these two lines "
+                f"where the index should go:\n  {start}\n  {end}"
+            )
+        return text
+    pre = text.split(start)[0]
+    post = text.split(end, 1)[1]
+    return f"{pre}{start}\n{payload}\n{end}{post}"
 
 
 def main(argv: list[str]) -> int:
     check = "--check" in argv
-    index_md = render_index()
+    rows = discover()
+    index_md = render_index(rows)
+    badge_md = render_count_badge(len(rows))
     current = README.read_text(encoding="utf-8") if README.exists() else ""
-    updated = inject(current, index_md)
+    # The index keeps a blank line around it (table reads better); the badge sits
+    # inline in the badge row, so no surrounding blank lines for that one.
+    updated = replace_between(current, START, END, f"\n{index_md}", required=True)
+    updated = replace_between(updated, COUNT_START, COUNT_END, badge_md, required=False)
     if check:
         if updated != current:
-            print("README.md skills index is out of date. Run: make index")
+            print("README.md skills index or count badge is out of date. Run: make index")
             return 1
-        print("Skills index is up to date.")
+        print("Skills index and count badge are up to date.")
         return 0
     README.write_text(updated, encoding="utf-8")
-    print("Updated README.md skills index.")
+    print(f"Updated README.md skills index ({len(rows)} skills).")
     return 0
 
 
