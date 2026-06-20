@@ -13,6 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: make check's drift build derives source_commit from
+          # `git log` over each skill's source files; a shallow clone would
+          # yield an empty/None source_commit and fail the rebuild.
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
