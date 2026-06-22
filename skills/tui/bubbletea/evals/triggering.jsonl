@@ -1,0 +1,24 @@
+{"query": "Build a terminal UI in Go with Bubble Tea: a viewport on the right and a selectable list on the left.", "should_trigger": true}
+{"query": "Wire up the Elm Architecture Init/Update/View for my Bubble Tea model — my Cmd/Msg isn't updating the state.", "should_trigger": true}
+{"query": "Stream LLM tokens from a goroutine into a Bubble Tea viewport and auto-follow the bottom unless I scroll up.", "should_trigger": true}
+{"query": "Style a Bubble Tea layout with Lip Gloss v2: a fixed 30-cell sidebar and a flexible main pane with a header and footer.", "should_trigger": true}
+{"query": "My Bubble Tea program won't compile after I imported lipgloss from github.com/charmbracelet — how do I fix the import paths?", "should_trigger": true}
+{"query": "Add a spinner and a progress bar from Bubbles to my interactive Go TUI.", "should_trigger": true}
+{"query": "Render markdown in the terminal with Glamour inside my Bubble Tea app.", "should_trigger": true}
+{"query": "Write a teatest test that drives my Bubble Tea model's update loop and checks the rendered output.", "should_trigger": true}
+{"query": "Migrate my Bubble Tea v1 code to the charm.land v2 import paths and the new View() signature.", "should_trigger": true}
+{"query": "Build an interactive full-screen Go CLI with a text input and a table using Bubble Tea.", "should_trigger": true}
+{"query": "Handle WindowSizeMsg on resize and recompute my Lip Gloss layout in my Bubble Tea program.", "should_trigger": true}
+{"query": "Measure display width correctly for CJK and emoji in my Bubble Tea view so the layout stops drifting.", "should_trigger": true}
+{"query": "Build a Rust terminal UI with ratatui — Layout/Constraint and a stateful list.", "should_trigger": false}
+{"query": "I want a Python TUI with Textual — App, widgets, and TCSS layout.", "should_trigger": false}
+{"query": "Convert this PNG photo into ASCII art and save it as a text file.", "should_trigger": false}
+{"query": "Render an image as colored half-block characters in the terminal in real time.", "should_trigger": false}
+{"query": "Make a React component that displays ASCII art on a web page.", "should_trigger": false}
+{"query": "Just print a colored, aligned table to stdout in Go with no interactivity.", "should_trigger": false}
+{"query": "Colorize a one-shot CLI message with cobra — no live UI, it exits immediately.", "should_trigger": false}
+{"query": "Build a web dashboard with charts in React and Tailwind.", "should_trigger": false}
+{"query": "Orchestrate several tmux panes for my agent session.", "should_trigger": false}
+{"query": "Write the release notes and changelog for my Go library's next version.", "should_trigger": false}
+{"query": "Build a cross-platform desktop GUI app in Go with Fyne.", "should_trigger": false}
+{"query": "Parse command-line flags for my Go CLI with the standard flag package.", "should_trigger": false}

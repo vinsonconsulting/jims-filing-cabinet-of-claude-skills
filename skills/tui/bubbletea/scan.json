@@ -1,11 +1,11 @@
 {
   "skill": {
     "name": "bubbletea",
-    "source": "/private/var/folders/t9/lt9wnv4s1bs0hl_10rmccfx80000gn/T/tmpe3w8mwen/bubbletea",
-    "scanned_at": "2026-06-20T13:37:27.686861+00:00"
+    "source": "/private/var/folders/t9/lt9wnv4s1bs0hl_10rmccfx80000gn/T/tmpg64why3h/bubbletea",
+    "scanned_at": "2026-06-22T23:47:16.469785+00:00"
   },
   "risk_assessment": {
-    "score": 0,
+    "score": 13,
     "severity": "LOW",
     "recommendation": "SAFE"
   },
@@ -18,18 +18,39 @@
       "size_bytes": 16201
     },
     {
-      "path": "card.authored.yaml",
-      "type": "yaml",
-      "lines": 9,
-      "executable": false,
-      "size_bytes": 450
-    },
-    {
       "path": "evals/evals.json",
       "type": "json",
       "lines": 88,
       "executable": false,
       "size_bytes": 4528
+    },
+    {
+      "path": "evals/functional/graders.py",
+      "type": "python",
+      "lines": 171,
+      "executable": true,
+      "size_bytes": 7606
+    },
+    {
+      "path": "evals/functional/run_grader.py",
+      "type": "python",
+      "lines": 59,
+      "executable": true,
+      "size_bytes": 1883
+    },
+    {
+      "path": "evals/functional/tasks.json",
+      "type": "json",
+      "lines": 61,
+      "executable": false,
+      "size_bytes": 4423
+    },
+    {
+      "path": "evals/triggering.jsonl",
+      "type": "other",
+      "lines": 24,
+      "executable": false,
+      "size_bytes": 2907
     },
     {
       "path": "references/agent-ui.md",
@@ -88,9 +109,27 @@
       "size_bytes": 3524
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "id": "LP3",
+      "category": "MCP Least Privilege",
+      "pattern": null,
+      "severity": "MEDIUM",
+      "confidence": 0.7,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 1,
+        "end_line": null
+      },
+      "finding": null,
+      "explanation": "Without declared permissions the skill's intent is opaque and cannot be validated.",
+      "remediation": "Add a 'permissions' field to SKILL.md listing the capabilities this skill requires.",
+      "code_snippet": null,
+      "intent": null
+    }
+  ],
   "metadata": {
-    "has_executable_scripts": false,
+    "has_executable_scripts": true,
     "skillspector_version": "2.2.3",
     "llm_requested": false,
     "llm_available": false

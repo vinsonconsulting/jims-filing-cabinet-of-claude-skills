@@ -1,0 +1,61 @@
+{
+  "skill_name": "bubbletea",
+  "tasks": [
+    {
+      "id": "constrained-layout",
+      "name": "Lip Gloss layout: header / body (sidebar + main) / footer",
+      "prompt": "Write a complete, compiling Bubble Tea v2 program in Go (on the charm.land/*/v2 import paths) whose View composes a header, a footer, and a body split into a fixed 30-cell sidebar plus a flexible main pane that fills the rest of the terminal width. Size from tea.WindowSizeMsg, compose the blocks with Lip Gloss (JoinHorizontal/JoinVertical), and measure widths with lipgloss.Width, never len(). Return a tea.View from View().",
+      "artifact": "main.go",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "stateful-list",
+      "name": "Nested Bubbles list component routed through Update",
+      "prompt": "Write a complete, compiling Bubble Tea v2 program in Go that embeds the Bubbles list component (charm.land/bubbles/v2/list) in the model, routes every message (including tea.WindowSizeMsg) into the list's Update, reassigns the returned model, and bubbles its Cmd up. Keep the Elm signatures: Init() tea.Cmd, Update(tea.Msg) (tea.Model, tea.Cmd), View() tea.View.",
+      "artifact": "main.go",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "scrollback-viewport",
+      "name": "Auto-following chat scrollback with the viewport Bubble",
+      "prompt": "Write a complete, compiling Bubble Tea v2 program in Go that shows a scrollable chat scrollback using the Bubbles viewport component. Build the viewport with functional options (viewport.New(viewport.WithWidth(...), viewport.WithHeight(...))), set its content with SetContent, and auto-follow the bottom only when the user is already pinned there: check AtBottom() before appending, then GotoBottom() if it was true. Do not hand-roll a ring buffer.",
+      "artifact": "main.go",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "streaming-llm",
+      "name": "Streaming tokens from a goroutine via p.Send",
+      "prompt": "Write a complete, compiling Bubble Tea v2 program in Go that streams text deltas from a producer goroutine into the UI. Capture the *tea.Program, push each delta from the goroutine with p.Send as a custom Msg, append it to a viewport inside Update, and auto-follow using AtBottom()/GotoBottom(). Never mutate the model or call Update from the goroutine — the only channel into the UI is p.Send.",
+      "artifact": "main.go",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "mvu-event-flow",
+      "name": "Elm Architecture model with key handling and a Cmd",
+      "prompt": "Write a complete, compiling Bubble Tea v2 program in Go that implements a small model with the Elm Architecture: Init() tea.Cmd, Update(tea.Msg) (tea.Model, tea.Cmd) returning the model by value, and View() tea.View. Handle tea.KeyPressMsg by matching msg.String() (quit on q / ctrl+c by returning tea.Quit), and drive a periodic tick with tea.Tick delivering a custom Msg. Do not use the v1 KeyMsg .Type/.Runes fields.",
+      "artifact": "main.go",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "text-width-unicode",
+      "name": "Width-aware CJK/emoji measurement and truncation",
+      "prompt": "Write a complete, compiling Bubble Tea v2 program in Go that renders a line containing CJK characters and emoji, measures its display width correctly, and truncates it to a fixed column width with an ellipsis. Measure with lipgloss.Width (or ansi.StringWidth) and truncate with ansi.Truncate from github.com/charmbracelet/x/ansi — never size by len() or rune count, which miscount wide and combining characters.",
+      "artifact": "main.go",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "lifecycle",
+      "name": "Program lifecycle: NewProgram/Run, alt-screen on the View",
+      "prompt": "Write a complete, compiling Bubble Tea v2 program in Go whose main builds the program with tea.NewProgram and runs it with p.Run(), checking the returned error. Enable full-window mode by setting AltScreen on the returned tea.View (v.AltScreen = true), NOT via a NewProgram option — tea.WithAltScreen()/WithMouseCellMotion() are gone in v2. Let the runtime own raw mode and panic recovery; do not hand-roll terminal setup or teardown.",
+      "artifact": "main.go",
+      "fixtures": [],
+      "grader_config": {}
+    }
+  ]
+}
