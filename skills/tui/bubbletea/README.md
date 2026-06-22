@@ -8,7 +8,7 @@ Build current Bubble Tea v2 terminal UIs in Go on the charm.land import paths â€
 
 <!-- card:begin badges -->
 
-[![scan: LOW (0/100)](https://img.shields.io/static/v1?label=scan&message=LOW%20%280/100%29&color=brightgreen)](skill-card.md)
+[![scan: LOW (13/100)](https://img.shields.io/static/v1?label=scan&message=LOW%20%2813/100%29&color=brightgreen)](skill-card.md)
 ![status: beta](https://img.shields.io/static/v1?label=status&message=beta&color=blue)
 ![card: v1.0](https://img.shields.io/static/v1?label=card&message=v1.0&color=555)
 ![signing: hash](https://img.shields.io/static/v1?label=signing&message=hash&color=555)
@@ -84,7 +84,7 @@ and compiles against Go 1.25.
 
 <!-- card:begin metrics -->
 
-Quality metrics are not published yet (status: beta). The security scan is LOW (0/100).
+Quality metrics are not published yet (status: beta). The security scan is LOW (13/100).
 
 <!-- card:end metrics -->
 

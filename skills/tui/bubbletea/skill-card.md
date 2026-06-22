@@ -7,8 +7,8 @@ repo:
   tier: public
   url: https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
 license: MIT
-source_commit: 5e49df814225e1d33d63b52f49780175fd0a4ef2
-content_hash: sha256:4580dff20fbc0b70afbe8389e411e20069c580e2a4e95cc53662b3065477cdde
+source_commit: 5136c9459165e3e4e62f0daad31045ba86bfd0dc
+content_hash: sha256:40a8ee72bb795a02d97a49e4ca3d6dd7d585b83c1d873a3718d69a7e88efeb24
 description: 'Use this skill when building a terminal UI (TUI) in Go with Bubble Tea and the Charm stack — the Elm Architecture / MVU pattern (`tea.Model` with `Init`/`Update`/`View`), `Cmd`/`Msg` event flow, Lip Gloss styling and layout, Bubbles components (`viewport`, `list`, `table`, `textinput`, `textarea`, `spinner`, `progress`), Glamour markdown rendering, and teatest for testing. Especially apt for streaming tokens from an LLM/agent into a terminal (goroutine → `p.Send` → `Update` → `viewport`), an agentic CLI, or any interactive full-screen or inline terminal app in Go. Targets v2 on the `charm.land/*/v2` import paths (Go 1.25+); writes current-version-correct code and avoids v1/beta patterns. Not for: Rust TUIs (→ Ratatui sibling), Python TUIs (→ Textual sibling), plain non-interactive CLI output (use `fmt`/`cobra`/standalone `lipgloss`), web/GUI UIs, or agent session orchestration / tmux / process multiplexing.'
 triggers:
   positive:
@@ -63,21 +63,27 @@ permissions:
 metrics: null
 scan:
   tool: skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002
-  score: 0
+  score: 13
   severity: LOW
-  date: '2026-06-20'
-  findings: []
+  date: '2026-06-22'
+  findings:
+  - rule_id: LP3
+    severity: MEDIUM
+    status: resolved
+    owasp: null
+    atlas: null
+    note: null
   sarif: ./report.sarif
 status: beta
 card_version: '1.0'
-updated: '2026-06-20'
+updated: '2026-06-22'
 ---
 
 # bubbletea <small>v0.1.0</small>
 
 Build current Bubble Tea v2 terminal UIs in Go on the charm.land import paths — the Elm/MVU pattern, Lip Gloss, Bubbles, Glamour, streaming, and teatest.
 
-**Status:** beta | **License:** MIT | **Scan:** LOW (0/100)
+**Status:** beta | **License:** MIT | **Scan:** LOW (13/100)
 
 ## When to use it
 
@@ -86,8 +92,10 @@ Use this skill when building a terminal UI (TUI) in Go with Bubble Tea and the C
 
 ## Security
 
-SkillSpector scan `skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002` scored 0/100 (LOW band).
+SkillSpector scan `skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002` scored 13/100 (LOW band).
 
-No findings.
+Findings:
+
+- `LP3` (MEDIUM, resolved)
 
 The SARIF report lives at `./report.sarif`.

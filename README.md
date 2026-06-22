@@ -65,7 +65,7 @@ skill's `card.json`, so they cannot go stale silently.
 
 | Skill | What it does | Scan | Trigger (P/R) |
 | --- | --- | --- | --- |
-| [`bubbletea`](skills/tui/bubbletea/README.md) | Build current Bubble Tea v2 terminal UIs in Go on the charm.land import paths — the Elm/MVU pattern, Lip Gloss, Bubbles, Glamour, streaming, and teatest. | LOW (0/100) | — |
+| [`bubbletea`](skills/tui/bubbletea/README.md) | Build current Bubble Tea v2 terminal UIs in Go on the charm.land import paths — the Elm/MVU pattern, Lip Gloss, Bubbles, Glamour, streaming, and teatest. | LOW (13/100) | — |
 | [`ratatui`](skills/tui/ratatui/README.md) | Write current, compiling Ratatui 0.30+ terminal UIs in Rust — render loop and teardown, Layout/Constraint, widgets, styling, Unicode width, streaming, and headless render tests. | LOW (13/100) | — |
 | [`textual`](skills/tui/textual/README.md) | Build and debug Python TUIs with Textual 8.x — App/Screen/Widget, reactive attributes, TCSS layout, @work workers, Pilot tests, and textual serve. | LOW (0/100) | — |
 
