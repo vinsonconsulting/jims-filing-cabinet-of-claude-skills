@@ -1,6 +1,6 @@
 Vendored from: vinsonconsulting/califa-cards
-Commit:        0bcd9dc8f595393bfea591a7697abcba4feec552  (branch main, v0.6.1)
-Vendored on:   2026-06-20
+Commit:        e6586a556c34578a06299e016d8fe7d224cdd47d  (branch main, v0.6.2)
+Vendored on:   2026-06-21
 License:       Apache-2.0 (see ./LICENSE)
 
 This is a pinned copy of Califa's `schema/` + `skillcard/` packages (now
