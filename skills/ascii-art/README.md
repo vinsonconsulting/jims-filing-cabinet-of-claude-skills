@@ -1,4 +1,4 @@
-# ascii_art
+# ascii-art
 
 Skills that turn images into character art or render character-grid graphics. The
 split is by surface: a command-line image converter, a React component, and a

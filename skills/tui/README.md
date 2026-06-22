@@ -2,7 +2,7 @@
 
 Terminal user interface skills: interactive full-screen or inline apps that run in
 a terminal, one skill per language and framework. Image-to-text art lives in
-[`ascii_art`](../ascii_art/README.md), not here, and plain non-interactive CLI
+[`ascii-art`](../ascii-art/README.md), not here, and plain non-interactive CLI
 output does not need a TUI skill.
 
 [Back to the catalog](../../README.md)

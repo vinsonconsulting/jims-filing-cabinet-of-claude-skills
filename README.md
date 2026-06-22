@@ -51,13 +51,13 @@ skill's `card.json`, so they cannot go stale silently.
 
 <!-- SKILLS-INDEX:START -->
 
-### [ascii_art](skills/ascii_art/README.md)
+### [ascii-art](skills/ascii-art/README.md)
 
 | Skill | What it does | Scan | Trigger (P/R) |
 | --- | --- | --- | --- |
-| [`ascii-img-react`](skills/ascii_art/ascii-img-react/README.md) | Use when rendering images as ASCII art in the browser or a React app with the ascii-img-react library | — | — |
-| [`image-to-ascii`](skills/ascii_art/image-to-ascii/README.md) | Convert an image file to ASCII art from the command line with shape-aware glyph matching (6D shape vectors, not a brightness ramp), output as .txt or a rendered .png/.svg, using a bundled monospace font for deterministic results. | MEDIUM (39/100) | — |
-| [`textmode-js`](skills/ascii_art/textmode-js/README.md) | Use when building real-time ASCII or textmode graphics in the browser with the textmode.js library | — | — |
+| [`ascii-img-react`](skills/ascii-art/ascii-img-react/README.md) | Use when rendering images as ASCII art in the browser or a React app with the ascii-img-react library | — | — |
+| [`image-to-ascii`](skills/ascii-art/image-to-ascii/README.md) | Convert an image file to ASCII art from the command line with shape-aware glyph matching (6D shape vectors, not a brightness ramp), output as .txt or a rendered .png/.svg, using a bundled monospace font for deterministic results. | MEDIUM (39/100) | — |
+| [`textmode-js`](skills/ascii-art/textmode-js/README.md) | Use when building real-time ASCII or textmode graphics in the browser with the textmode.js library | — | — |
 
 ### [tui](skills/tui/README.md)
 

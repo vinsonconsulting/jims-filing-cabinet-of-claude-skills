@@ -4,6 +4,14 @@
 # identity; this file carries governance.
 status: beta
 
+# Provenance pinned across the ascii_art -> ascii-art category rename. The rename
+# moved this skill's path, which would otherwise advance the git-derived
+# source_commit to the rename commit; the source content is unchanged
+# (content_hash is stable), so we pin to the commit that last changed the source.
+# Refresh or drop these when the skill's source is next genuinely edited.
+source_commit: 5e49df814225e1d33d63b52f49780175fd0a4ef2
+updated: 2026-06-20
+
 # Accept-and-note decisions, keyed by SkillSpector finding id. This skill scans
 # MEDIUM (score 39 = (LP3 +10, EA3 x4 +20) x1.3 executable-script multiplier);
 # in the MEDIUM band the gate requires every finding accepted with a note. Both

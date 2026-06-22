@@ -5,7 +5,8 @@ Baseline checks (tune to taste in this file):
   ERROR  missing frontmatter block
   ERROR  missing or empty `name`
   ERROR  missing or empty `description`
-  WARN   `name` is not a lowercase slug
+  ERROR  `name` is not a kebab-case slug (lowercase, hyphen-separated)
+  ERROR  category or skill folder is not kebab-case (agentskills.io rejects underscores)
   WARN   `name` does not match the skill folder name (skipped for namespaced a:b)
   WARN   description longer than DESCRIPTION_MAX chars
   WARN   a relative file referenced in the body does not exist
@@ -27,9 +28,13 @@ ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "skills"
 
 DESCRIPTION_MAX = 1024
+# Kebab-case only: the agentskills.io slug regex rejects underscores, so the
+# cabinet does too. NAME_RE allows one namespace segment (a:b); SLUG_RE is the
+# plain form for directory names (category + skill folder), never namespaced.
 NAME_RE = re.compile(
-    r"^[a-z0-9]+(?:[-_][a-z0-9]+)*(?::[a-z0-9]+(?:[-_][a-z0-9]+)*)?$"
+    r"^[a-z0-9]+(?:-[a-z0-9]+)*(?::[a-z0-9]+(?:-[a-z0-9]+)*)?$"
 )
+SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 REF_RE = re.compile(
     r"(?:\]\(|`)((?:scripts|reference|references|assets|data)/[^)\s`]+)"
 )
@@ -55,8 +60,13 @@ def lint_skill(path: Path) -> tuple[list[str], list[str]]:
     if not desc:
         errors.append("missing or empty `description`")
     if name and not NAME_RE.match(name):
-        warns.append(f"`name` is not a lowercase slug: {name!r}")
+        errors.append(f"`name` is not a kebab-case slug (no underscores): {name!r}")
     folder = path.parent.name
+    if not SLUG_RE.match(folder):
+        errors.append(f"skill folder is not kebab-case (no underscores): {folder!r}")
+    rel_parts = path.relative_to(SKILLS_DIR).parts
+    if len(rel_parts) >= 3 and not SLUG_RE.match(rel_parts[0]):
+        errors.append(f"category folder is not kebab-case (no underscores): {rel_parts[0]!r}")
     if name and ":" not in name and name != folder:
         warns.append(f"`name` ({name!r}) does not match folder ({folder!r})")
     if desc and len(desc) > DESCRIPTION_MAX:

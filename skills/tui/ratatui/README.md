@@ -45,9 +45,9 @@ Unicode width, streaming async output, and headless render tests with TestBacken
 
 - build a terminal UI in Go with Bubble Tea → use [`bubbletea`](../bubbletea/README.md)
 - build a Python TUI with Textual → use [`textual`](../textual/README.md)
-- convert this image to ASCII art → use [`image-to-ascii`](../../ascii_art/image-to-ascii/README.md)
-- render an image as colored terminal blocks → use [`textmode-js`](../../ascii_art/textmode-js/README.md)
-- make an ASCII-art React component → use [`ascii-img-react`](../../ascii_art/ascii-img-react/README.md)
+- convert this image to ASCII art → use [`image-to-ascii`](../../ascii-art/image-to-ascii/README.md)
+- render an image as colored terminal blocks → use [`textmode-js`](../../ascii-art/textmode-js/README.md)
+- make an ASCII-art React component → use [`ascii-img-react`](../../ascii-art/ascii-img-react/README.md)
 - add a progress bar to a non-interactive CLI script → plain CLI output (no TUI skill)
 - just print a colored table to stdout, no interactivity → plain CLI output (no TUI skill)
 - build a web dashboard in React → web UI (out of scope)

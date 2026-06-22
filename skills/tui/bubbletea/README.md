@@ -46,9 +46,9 @@ a viewport.
 
 - build a Rust terminal UI → use [`ratatui`](../ratatui/README.md)
 - build a Python TUI with Textual → use [`textual`](../textual/README.md)
-- convert an image to ASCII art → use [`image-to-ascii`](../../ascii_art/image-to-ascii/README.md)
-- render an image as terminal color blocks → use [`textmode-js`](../../ascii_art/textmode-js/README.md)
-- make an ASCII-art React component → use [`ascii-img-react`](../../ascii_art/ascii-img-react/README.md)
+- convert an image to ASCII art → use [`image-to-ascii`](../../ascii-art/image-to-ascii/README.md)
+- render an image as terminal color blocks → use [`textmode-js`](../../ascii-art/textmode-js/README.md)
+- make an ASCII-art React component → use [`ascii-img-react`](../../ascii-art/ascii-img-react/README.md)
 - colorize a one-shot CLI message with fmt/cobra, no live UI → plain CLI output (no TUI skill)
 - standalone lipgloss styling with no program loop → plain CLI output (no TUI skill)
 - build a browser or GUI app → web/GUI UI (out of scope)

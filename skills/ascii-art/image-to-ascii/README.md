@@ -50,7 +50,7 @@ Copy the skill folder into a place Claude reads skills.
 
 ```bash
 git clone https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
-cp -r jims-filing-cabinet-of-claude-skills/skills/ascii_art/image-to-ascii ~/.claude/skills/
+cp -r jims-filing-cabinet-of-claude-skills/skills/ascii-art/image-to-ascii ~/.claude/skills/
 ```
 
 Use `.claude/skills/` inside a project to scope it to one repo instead of your user.

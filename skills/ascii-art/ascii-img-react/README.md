@@ -1,4 +1,4 @@
-# textmode-js
+# ascii-img-react
 
 <!-- card:begin summary -->
 
@@ -14,11 +14,11 @@ _Skill card pending. This skill ships a `SKILL.md` but has no published `card.js
 
 ## What it does
 
-This skill builds real-time textmode graphics in the browser with `textmode.js`, a
-zero-dependency WebGL2 library that renders to a grid of character cells with
-p5.js-style ergonomics. It covers the create/setup/draw lifecycle, glyph and color
-cells, animation and noise, layers, custom GLSL shaders, and export to TXT, SVG,
-PNG, GIF, MP4, or WebM.
+This skill renders an image as ASCII art in React through an `<AsciiImage>`
+component. It matches each grid cell to the character whose shape fits best (6D
+shape vectors with a nearest-neighbour lookup), so diagonals and curves read as
+`/`, `\`, and `_` rather than a blocky brightness ramp. It also covers CSS-variable
+theming, the CORS requirement for the source image, and Astro or Next integration.
 
 ## When it triggers
 
@@ -34,21 +34,21 @@ Copy the skill folder into a place Claude reads skills.
 
 ```bash
 git clone https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
-cp -r jims-filing-cabinet-of-claude-skills/skills/ascii_art/textmode-js ~/.claude/skills/
+cp -r jims-filing-cabinet-of-claude-skills/skills/ascii-art/ascii-img-react ~/.claude/skills/
 ```
 
 Use `.claude/skills/` inside a project to scope it to one repo instead of your user.
 
 ## Example
 
-Describe a sketch and the skill writes the lifecycle.
+Ask for an ASCII image and the skill wires up the component.
 
-> Make a full-screen textmode sketch driven by a noise-field glyph ramp.
+> Add an ASCII portrait to my hero section, green on black, no ripple.
 
-The skill scaffolds `textmode.create({...})` with `setup` and `draw`, sets
-`char`/`charColor`/`cellColor` per cell, and samples a noise field to pick glyphs
-from a ramp each frame. It flags the common trip-up up front: the origin `(0,0)` is
-the grid center, not the top-left.
+The skill installs `ascii-img-react`, then renders
+`<AsciiImage src="/portrait.jpg" width={100} color="#39ff14" backgroundColor="#000" enableRipple={false} />`,
+where `width` is measured in characters. It flags that the source image must be
+same-origin or CORS-enabled, since the component samples it on a hidden canvas.
 
 ## Quality
 

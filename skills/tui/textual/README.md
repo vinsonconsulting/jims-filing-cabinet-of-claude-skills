@@ -45,9 +45,9 @@ and Widget, reactive attributes and their `watch_` methods, TCSS layout (`dock`,
 
 - build a Rust terminal UI → use [`ratatui`](../ratatui/README.md)
 - build a Go TUI with Bubble Tea → use [`bubbletea`](../bubbletea/README.md)
-- convert an image to ASCII art → use [`image-to-ascii`](../../ascii_art/image-to-ascii/README.md)
-- render an image as terminal color blocks → use [`textmode-js`](../../ascii_art/textmode-js/README.md)
-- make an ASCII-art React component → use [`ascii-img-react`](../../ascii_art/ascii-img-react/README.md)
+- convert an image to ASCII art → use [`image-to-ascii`](../../ascii-art/image-to-ascii/README.md)
+- render an image as terminal color blocks → use [`textmode-js`](../../ascii-art/textmode-js/README.md)
+- make an ASCII-art React component → use [`ascii-img-react`](../../ascii-art/ascii-img-react/README.md)
 - parse CLI flags with argparse/Click, no live UI → plain CLI output (no TUI skill)
 - print a one-shot colored table with Rich, no app loop → rich-only output (out of scope)
 - build a general React/HTML web app → web UI (out of scope)
