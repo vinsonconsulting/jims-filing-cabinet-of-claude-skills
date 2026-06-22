@@ -1,7 +1,13 @@
 Vendored from: vinsonconsulting/califa-cards
-Commit:        e6586a556c34578a06299e016d8fe7d224cdd47d  (branch main, v0.6.2)
+Commit:        f11894ed3b0a9caafd6ceb27db308808e3b7fa11  (v0.6.2 + functional references-dir fix)
 Vendored on:   2026-06-21
 License:       Apache-2.0 (see ./LICENSE)
+
+Pin note: f11894e is v0.6.2 (e6586a5) plus one harness fix — the functional eval
+now copies a skill's `references/` (plural) into the eval workspace, not only the
+singular `reference/`. It lives on branch fix/functional-eval-copy-references
+pending its own PR/tag; update this pin to the merged SHA once that lands. The
+fix is eval-path only and does not touch the card build/render/hash path.
 
 This is a pinned copy of Califa's `schema/` + `skillcard/` packages (now
 including the `skillcard.harness` subpackage, dormant here — `make check` never
