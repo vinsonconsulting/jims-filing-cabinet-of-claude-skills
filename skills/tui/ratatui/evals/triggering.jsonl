@@ -1,0 +1,24 @@
+{"query": "I'm building a system monitor in Rust with ratatui — a left sidebar of processes and a main panel with live CPU/mem charts. Help me lay it out.", "should_trigger": true}
+{"query": "After my ratatui app panics, the terminal is stuck in raw mode and the prompt is invisible. How do I make teardown panic-safe?", "should_trigger": true}
+{"query": "Split my ratatui frame into a header, three side-by-side columns, and a footer using Layout and Constraint.", "should_trigger": true}
+{"query": "I need a selectable list in ratatui where the highlighted row survives across redraws and j/k move the selection.", "should_trigger": true}
+{"query": "Stream LLM tokens from a tokio task into my ratatui chat view without redrawing on every single token.", "should_trigger": true}
+{"query": "My ratatui table with Japanese text has misaligned columns — the CJK characters throw off the widths.", "should_trigger": true}
+{"query": "Write a TestBackend-based unit test that asserts my ratatui widget renders the right buffer, with no real terminal.", "should_trigger": true}
+{"query": "Scaffold the crossterm terminal setup and event loop for a brand-new ratatui app.", "should_trigger": true}
+{"query": "Add a confirm/cancel modal popup centered over my existing ratatui layout.", "should_trigger": true}
+{"query": "Port this old tui-rs 0.19 code to current ratatui 0.30 — the Layout and Constraint APIs changed.", "should_trigger": true}
+{"query": "Draw a Gauge and a Sparkline in ratatui that update every frame from my app state.", "should_trigger": true}
+{"query": "My ratatui Scrollbar doesn't move when I scroll the list — the ScrollbarState isn't tracking the offset.", "should_trigger": true}
+{"query": "Build a terminal UI in Go using Bubble Tea and Lip Gloss.", "should_trigger": false, "sibling": "bubbletea"}
+{"query": "I want a Python TUI with Textual — App, widgets, and TCSS layout.", "should_trigger": false, "sibling": "textual"}
+{"query": "Convert this PNG photo into ASCII art and save it as a text file.", "should_trigger": false, "sibling": "image-to-ascii"}
+{"query": "Render an image as colored half-block characters in the terminal in real time.", "should_trigger": false, "sibling": "textmode-js"}
+{"query": "Make a React component that displays ASCII art on a web page.", "should_trigger": false, "sibling": "ascii-img-react"}
+{"query": "Add a progress bar to my non-interactive Rust build script.", "should_trigger": false, "sibling": "plain CLI output (no TUI skill)"}
+{"query": "Just print a colored, aligned table to stdout in Rust — no interactivity.", "should_trigger": false, "sibling": "plain CLI output (no TUI skill)"}
+{"query": "Build a web dashboard with charts in React and Tailwind.", "should_trigger": false, "sibling": "web UI (out of scope)"}
+{"query": "Orchestrate several tmux panes for my agent session.", "should_trigger": false, "sibling": "session orchestration (out of scope)"}
+{"query": "Write a CLAUDE.md documenting build commands for my Rust repo.", "should_trigger": false, "sibling": "project docs (out of scope)"}
+{"query": "Parse command-line flags for my Rust CLI with clap.", "should_trigger": false, "sibling": "plain CLI / clap (no TUI skill)"}
+{"query": "Build a desktop GUI app in Rust with egui.", "should_trigger": false, "sibling": "GUI toolkit (out of scope)"}

@@ -7,8 +7,8 @@ repo:
   tier: public
   url: https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
 license: MIT
-source_commit: 5e49df814225e1d33d63b52f49780175fd0a4ef2
-content_hash: sha256:7b48bbf04af426a8fc9e26157053412bdd44162baf4b5be98a0851375f017ae5
+source_commit: 99368535fbe2cc9e32708fa4cac94645555a5105
+content_hash: sha256:43009e3accb4aaf75ec20824a4352c4453fac00fa4523481715dd2664b0ca981
 description: 'Use this skill for any task involving a Rust terminal/text user interface (TUI) built with Ratatui (or crossterm) — creating one, or debugging, fixing, testing, or extending an existing one. Covers: scaffolding the initial `main`/render loop and terminal setup; fixing teardown so a panic or crash doesn''t leave the terminal in raw mode / broken; laying out panels, sidebars, status bars, dashboards, and popups with Layout/Constraint; wiring widgets like List, Table, Gauge, Chart, Scrollbar (including selection/scroll state that won''t move); styling, text wrapping, and Unicode width issues; streaming LLM/async output into a terminal; and unit-testing rendered output without a real terminal. Triggers on "rust + terminal app/UI/dashboard", ratatui, crossterm. Writes current Ratatui 0.30+ code, not stale tui-rs patterns. Not for: Go TUIs (Bubble Tea), Python TUIs (Textual), non-interactive CLI output or progress bars, web/browser UIs, image-to-ASCII art (ascii/textmode), or tmux/agent-session orchestration.'
 triggers:
   positive:
@@ -62,21 +62,27 @@ permissions:
 metrics: null
 scan:
   tool: skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002
-  score: 0
+  score: 13
   severity: LOW
-  date: '2026-06-20'
-  findings: []
+  date: '2026-06-22'
+  findings:
+  - rule_id: LP3
+    severity: MEDIUM
+    status: resolved
+    owasp: null
+    atlas: null
+    note: null
   sarif: ./report.sarif
 status: beta
 card_version: '1.0'
-updated: '2026-06-20'
+updated: '2026-06-22'
 ---
 
 # ratatui <small>v0.1.0</small>
 
 Write current, compiling Ratatui 0.30+ terminal UIs in Rust — render loop and teardown, Layout/Constraint, widgets, styling, Unicode width, streaming, and headless render tests.
 
-**Status:** beta | **License:** MIT | **Scan:** LOW (0/100)
+**Status:** beta | **License:** MIT | **Scan:** LOW (13/100)
 
 ## When to use it
 
@@ -85,8 +91,10 @@ Use this skill for any task involving a Rust terminal/text user interface (TUI) 
 
 ## Security
 
-SkillSpector scan `skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002` scored 0/100 (LOW band).
+SkillSpector scan `skillspector@a5092dd9b9521ff57a9b53612bb129ce78019002` scored 13/100 (LOW band).
 
-No findings.
+Findings:
+
+- `LP3` (MEDIUM, resolved)
 
 The SARIF report lives at `./report.sarif`.

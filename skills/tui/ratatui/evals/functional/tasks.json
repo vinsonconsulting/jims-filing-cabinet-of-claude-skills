@@ -1,0 +1,61 @@
+{
+  "skill_name": "ratatui",
+  "tasks": [
+    {
+      "id": "constrained-layout",
+      "name": "Constraint-based layout: header / body (sidebar + main) / status bar",
+      "prompt": "Write a complete, compiling Ratatui 0.30 program in Rust that splits the frame into a 3-line header, a filling body, and a 1-line status bar, then splits the body into a fixed 30-cell sidebar and a filling main area. Use the current Layout/Constraint API and render each region with a bordered Block so the structure is visible.",
+      "artifact": "main.rs",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "stateful-scrollable-list",
+      "name": "Scrollable selectable List with ListState + Scrollbar",
+      "prompt": "Write a complete, compiling Ratatui 0.30 program in Rust that renders a scrollable, selectable List backed by a ListState owned in the app, with j/k navigation, and a Scrollbar driven by a ScrollbarState kept in sync with the selection. Keep all selection/scroll state in the app, not the widget.",
+      "artifact": "main.rs",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "scrollback-model",
+      "name": "Synchronous auto-following chat scrollback",
+      "prompt": "Write a complete, compiling Ratatui 0.30 program in Rust (synchronous, no async) that implements a wrapping chat scrollback the user can scroll: own a VecDeque<Line> (or Vec<Line>) plus a scroll offset, render only the visible slice, auto-follow the bottom but freeze when the user has scrolled up, and drive a ScrollbarState from the offset and length.",
+      "artifact": "main.rs",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "streaming-viewport",
+      "name": "Async streaming into the scrollback over tokio mpsc",
+      "prompt": "Write a complete, compiling Ratatui 0.30 program in Rust using tokio that feeds a scrollback from streaming text deltas arriving over an mpsc channel. Multiplex keyboard input, the delta stream, and a render tick with tokio::select!, and redraw on the render tick rather than on every delta. Model events as an Action/Msg enum.",
+      "artifact": "main.rs",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "custom-stateful-widget",
+      "name": "Custom widget implemented for a reference",
+      "prompt": "Write a complete, compiling Ratatui 0.30 program in Rust that defines and renders a custom widget. Implement Widget for a reference (&T) so the caller keeps ownership, write the widget's cells via Line/Span/Buffer methods (never raw ANSI escape codes), and render it with the current API. If the widget needs external state, use StatefulWidget instead.",
+      "artifact": "main.rs",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "text-wrapping-unicode",
+      "name": "CJK/emoji paragraph wrapping and width-aware truncation",
+      "prompt": "Write a complete, compiling Ratatui 0.30 program in Rust that renders a paragraph containing CJK characters and emoji, wraps it correctly at a given width, and truncates it with an ellipsis on a single line. Measure by display width (unicode-width), never by byte length or char count, and truncate on grapheme boundaries.",
+      "artifact": "main.rs",
+      "fixtures": [],
+      "grader_config": {}
+    },
+    {
+      "id": "lifecycle-hygiene",
+      "name": "Panic-safe terminal setup/teardown with color-eyre",
+      "prompt": "Write a complete, compiling Ratatui 0.30 program in Rust whose setup and teardown always restore the terminal, including on panic, using the current API together with color-eyre. Do not hand-roll raw mode or the alternate screen.",
+      "artifact": "main.rs",
+      "fixtures": [],
+      "grader_config": {}
+    }
+  ]
+}
