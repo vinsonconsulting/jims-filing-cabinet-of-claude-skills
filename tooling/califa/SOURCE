@@ -1,18 +1,17 @@
 Vendored from: vinsonconsulting/califa-cards
-Commit:        89d52f6a73f66151b6571f400e907c2a634cde7b  (v0.7.0)
-Tag:           v0.7.0
-Vendored on:   2026-06-22
+Commit:        81c4bd56ddd322841652dce215408be8e11e5239  (v0.7.1)
+Tag:           v0.7.1
+Vendored on:   2026-06-23
 License:       Apache-2.0 (see ./LICENSE)
 
-Pin note: 89d52f6 is the v0.7.0 release (merge of PR #10, "Skill-card v0.7.0:
-eval rate-limit resilience"). It supersedes the prior pin f975d4b (v0.6.2 plus
-two eval-path fixes on fix/functional-eval-copy-references) — those eval-path
-fixes are folded into v0.7.0's history. v0.7.0 adds the eval rate-limit
-resilience layer (new `skillcard/harness/reliability.py`: TokenBucket pacer +
-call_with_retry backoff/jitter + ReliabilityStats), the eval/optimize CLI knobs
-`--rate-limit` / `--max-retries` / `--task-timeout` / `--backoff-base` /
-`--backoff-cap`, and a terminal-failure-only integrity guard. All additive on
-the eval path; the card build/render/hash path is unchanged.
+Pin note: 81c4bd5 is the v0.7.1 release (merge of PR #11) — a bump-and-tag over
+v0.7.0 that ships the upstreamed README content-hash exclusion. hashing.py now
+keeps "README.md" in EXCLUDE_NAMES upstream (califa-cards 6d6e27c / PR #9), so
+the cabinet's former local hashing.py patch is RETIRED: this vendored copy is
+byte-identical to the tag with no cabinet-local deviation. Net hashing behaviour
+is unchanged from the prior v0.7.0 vendor (README was already excluded there via
+the local patch), so no card content_hash moves. v0.7.1 carries no functional
+code change vs v0.7.0 beyond the exclusion plus a README lineage-section cleanup.
 
 This is a pinned copy of Califa's `schema/` + `skillcard/` packages (including
 the `skillcard.harness` subpackage, dormant here — `make check` never runs
