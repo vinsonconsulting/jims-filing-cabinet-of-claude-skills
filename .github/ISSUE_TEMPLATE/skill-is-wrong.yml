@@ -1,0 +1,42 @@
+name: A skill is wrong or out of date
+description: A skill gives stale advice, fails to fire, fires when it shouldn't, or ships broken instructions.
+labels: ["fix"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Skills wrap a moving target: library versions drift, APIs change, a trigger
+        that read well turns out to under-fire. Tell us which skill and what went
+        sideways.
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill?
+      description: "Path, e.g. `skills/tui/textual`."
+      placeholder: skills/category/skill-name
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of wrong?
+      options:
+        - Stale or incorrect instructions (wrong version, dead API, won't compile)
+        - Under-triggers (didn't fire when it should have)
+        - Over-triggers (fired on something it shouldn't own)
+        - Broken script, reference, or asset
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: What happened?
+      description: The prompt you used, what the skill did, and what you expected instead. Paste the offending snippet if there is one.
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Relevant versions
+      description: Library or framework version the skill is wrong about, if that's the issue.

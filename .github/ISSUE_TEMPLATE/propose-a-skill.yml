@@ -1,0 +1,45 @@
+name: Propose a skill
+description: Suggest a new skill for the cabinet. Read CONTRIBUTING.md first.
+labels: ["new-skill"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        One skill, one concern. If the idea has two jobs, it is two proposals. The
+        thing that earns a skill its place here is reliable triggering, so spend
+        your words on *when* a model should reach for it.
+  - type: input
+    id: name
+    attributes:
+      label: Proposed name and category
+      description: "Kebab-case, e.g. `tui/bubbletea` or `ascii-art/image-to-ascii`."
+      placeholder: category/skill-name
+    validations:
+      required: true
+  - type: textarea
+    id: does
+    attributes:
+      label: What does it do?
+      description: One or two sentences. The capability, not the pitch.
+    validations:
+      required: true
+  - type: textarea
+    id: triggers
+    attributes:
+      label: When should a model fire it?
+      description: The prompts and keywords a user would actually type. This is the part that decides whether the skill works.
+    validations:
+      required: true
+  - type: textarea
+    id: siblings
+    attributes:
+      label: What should it NOT fire on?
+      description: Adjacent cases that belong to a different skill (or to no skill). Naming these keeps precision honest.
+  - type: checkboxes
+    id: scope-check
+    attributes:
+      label: Scope check
+      options:
+        - label: This is one concern, not two skills wearing a trenchcoat.
+        - label: I can describe concrete triggers, not just a topic.
+        - label: No secrets ship in the skill (it references where they live instead).
