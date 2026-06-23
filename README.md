@@ -7,7 +7,7 @@
 
 <h1 align="center">Jim's Filing Cabinet of Claude Skills</h1>
 
-<p align="center">A library of self-contained Claude skills you copy into your setup, each one security-scanned and measured before it ships.</p>
+<p align="center">A library of self-contained Claude skills you copy into your setup, each security-scanned and eval'ed.</p>
 
 <!-- build / CI -->
 [![validate](https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/actions/workflows/validate.yml)
