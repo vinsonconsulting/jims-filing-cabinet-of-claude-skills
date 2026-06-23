@@ -14,11 +14,14 @@ Functional modules:
   namespace-isolated trigger runner (ported fork) + functional grader
   orchestrator that writes ``evals/evals.json``. Makes real ``claude`` calls; it
   is never exercised by ``make check``.
+* :mod:`skillcard.badges` -- map a ``card.json`` to shields.io endpoint JSON,
+  one badge per metric (scan, trigger, tasks, signed, card).
 * :mod:`skillcard.cli` -- the ``skillcard`` entrypoint (validate, gate, hash,
-  build, review, eval; badges remains a v2 stub).
+  build, review, eval, badges).
 
 The deterministic generator (discover -> build -> render -> review) landed in
 v0.3.0; v0.4.0 moved authored governance to a ``card.authored.yaml`` sidecar so
-it no longer affects ``content_hash``; v0.5.0 added the ``eval`` metrics harness.
-See SPEC.md sections C, D, and H. :mod:`skillcard.badges` is still a stub.
+it no longer affects ``content_hash``; v0.5.0 added the ``eval`` metrics harness;
+v0.8.0 implemented the ``badges`` generator (``card.json`` -> shields.io endpoint
+JSON, one badge per metric). See SPEC.md sections C, D, and H.
 """
