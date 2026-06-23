@@ -1,0 +1,57 @@
+name: badges
+
+# Publish shields.io endpoint JSON for every carded skill to the public R2
+# bucket `califa-badges`, keyed <name>/<metric>.json. The key layout matches the
+# future Discover Worker route (Califa SPEC §G: GET /badge/<name>/<metric>.json),
+# so the Worker reads these same objects later with no migration.
+#
+# Runs only on `main` (and on demand): Actions secrets are withheld from fork-PR
+# runs, and badge publishing should follow a merge, not gate a PR. PR validation
+# stays in validate.yml.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # manual re-publish after a card changes without a code push
+
+permissions:
+  contents: read
+
+jobs:
+  publish-badges:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # badges.py reads only card.json, so install the vendored skillcard WITHOUT
+      # the [scan] extra (which would pull SkillSpector from git — unnecessary here).
+      - name: Install skillcard
+        run: python3 -m pip install ./tooling/califa
+
+      - name: Generate badge JSON for every carded skill
+        run: |
+          set -euo pipefail
+          rm -rf badge-staging   # staging dir OUTSIDE skills/ — satisfies the --out guard
+          for card in skills/*/*/card.json; do
+            d="$(dirname "$card")"
+            name="$(basename "$d")"   # folder basename == card name (path contract)
+            skillcard badges "$d" --metric all --out "badge-staging/$name"
+          done
+
+      - name: Upload badges to R2 (<name>/<metric>.json)
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          for f in badge-staging/*/*.json; do
+            name="$(basename "$(dirname "$f")")"
+            metric="$(basename "$f")"
+            # --remote is mandatory: r2 object put writes to local simulation otherwise.
+            npx --yes wrangler@4 r2 object put "califa-badges/$name/$metric" \
+              --file "$f" --content-type application/json --remote
+          done
