@@ -17,3 +17,6 @@ venv/
 report.sarif
 skillspector.sarif
 .skillcheck/
+
+# Editable-install build artifact from `pip install -e tooling/califa`
+tooling/califa/build/
