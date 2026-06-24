@@ -5,7 +5,7 @@
 <p align="center">A library of self-contained Claude skills you copy into your setup, each security-scanned and eval'ed.</p>
 
 <!-- build / CI -->
-[![validate](https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/actions/workflows/validate.yml)
+[![validate](https://github.com/vinsonconsulting/claude-skill-foundry/actions/workflows/validate.yml/badge.svg)](https://github.com/vinsonconsulting/claude-skill-foundry/actions/workflows/validate.yml)
 
 <!-- catalog (counts read from the skill cards by `make index`) -->
 <!-- SKILLS-COUNT:START -->
@@ -18,8 +18,8 @@
 <!-- meta -->
 [![license: MIT](https://img.shields.io/badge/license-MIT-2b7489)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-2b7489)](CONTRIBUTING.md)
-[![last commit](https://img.shields.io/github/last-commit/vinsonconsulting/jims-filing-cabinet-of-claude-skills)](https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/commits/main)
-[![repo size](https://img.shields.io/github/repo-size/vinsonconsulting/jims-filing-cabinet-of-claude-skills)](https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills)
+[![last commit](https://img.shields.io/github/last-commit/vinsonconsulting/claude-skill-foundry)](https://github.com/vinsonconsulting/claude-skill-foundry/commits/main)
+[![repo size](https://img.shields.io/github/repo-size/vinsonconsulting/claude-skill-foundry)](https://github.com/vinsonconsulting/claude-skill-foundry)
 
 ## What this is
 
@@ -56,8 +56,8 @@ you copy is the skill folder itself (`bubbletea`), not the category folder above
 it (`tui`).
 
 ```bash
-git clone https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
-cp -r jims-filing-cabinet-of-claude-skills/skills/tui/bubbletea ~/.claude/skills/
+git clone https://github.com/vinsonconsulting/claude-skill-foundry
+cp -r claude-skill-foundry/skills/tui/bubbletea ~/.claude/skills/
 ```
 
 That installs `bubbletea` for your user. There are three places it can live:
