@@ -16,7 +16,7 @@
 <!-- SCANS:END -->
 
 <!-- meta -->
-[![license: MIT](https://img.shields.io/badge/license-MIT-2b7489)](LICENSE)
+[![license: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-2b7489)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-2b7489)](CONTRIBUTING.md)
 [![last commit](https://img.shields.io/github/last-commit/vinsonconsulting/claude-skill-foundry)](https://github.com/vinsonconsulting/claude-skill-foundry/commits/main)
 [![repo size](https://img.shields.io/github/repo-size/vinsonconsulting/claude-skill-foundry)](https://github.com/vinsonconsulting/claude-skill-foundry)
@@ -221,7 +221,7 @@ failure fails the build just as it would on your machine.
 
 **Are these official Anthropic skills?**
 
-No. This is a personal library, MIT licensed, with no affiliation to Anthropic.
+No. This is a personal library, Apache-2.0 licensed, with no affiliation to Anthropic.
 The skills target Claude because that is what I use, but the format is just folders
 of Markdown and scripts.
 
@@ -277,4 +277,4 @@ the scoring bands, and how to report a vulnerable or malicious skill are in
 ## Contributing and license
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) to add or change a skill. Released under the
-MIT license; see [LICENSE](LICENSE).
+Apache-2.0 license; see [LICENSE](LICENSE).

@@ -33,8 +33,8 @@ _Skill card pending. This skill ships a `SKILL.md` but has no published `card.js
 Copy the skill folder into a place Claude reads skills.
 
 ```bash
-git clone https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
-cp -r jims-filing-cabinet-of-claude-skills/skills/ascii-art/textmode-js ~/.claude/skills/
+git clone https://github.com/vinsonconsulting/claude-skill-foundry
+cp -r claude-skill-foundry/skills/ascii-art/textmode-js ~/.claude/skills/
 ```
 
 Use `.claude/skills/` inside a project to scope it to one repo instead of your user.

@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: Security vulnerability or malicious skill
-    url: https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills/security/advisories/new
+    url: https://github.com/vinsonconsulting/claude-skill-foundry/security/advisories/new
     about: Report privately, not as a public issue. See SECURITY.md.

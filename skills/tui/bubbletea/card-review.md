@@ -4,7 +4,7 @@ Each HUMAN field below needs sign-off: put an x in its checkbox once you
 have verified it. `skillcard review` / `make check` blocks until every box
 is checked. Regenerating the card with changed content resets this checklist.
 
-fingerprint: sha256:1e925a263a04541063c2de0fc6b11b667b39b3ae017508324e7a031a5193c629
+fingerprint: sha256:311d52609cf251fcc86a51515221c3a71e8bebcc02c9ad25464ff124b6b94492
 
 - [x] `summary` — Build current Bubble Tea v2 terminal UIs in Go on the charm.land import paths — the Elm/MVU pattern, Lip Gloss, Bubbles, Glamour, streaming, and teatest.
 - [x] `triggers` — 12 positive / 10 negative

@@ -3,8 +3,8 @@
 # root file is shared by every skill in the cabinet.
 owner = "@vinsonconsulting"
 tier = "public"
-url = "https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills"
-license = "MIT"
+url = "https://github.com/vinsonconsulting/claude-skill-foundry"
+license = "Apache-2.0"
 # The SkillSpector pin the cabinet gates against (pyproject's [scan] extra). Takes
 # precedence over the report's self-reported version for scan.tool, so the card's
 # scan.tool stays stable even though SkillSpector self-reports "2.2.3".

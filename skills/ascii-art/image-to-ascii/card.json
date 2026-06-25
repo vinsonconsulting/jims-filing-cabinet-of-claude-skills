@@ -5,9 +5,9 @@
   "owner": "@vinsonconsulting",
   "repo": {
     "tier": "public",
-    "url": "https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills"
+    "url": "https://github.com/vinsonconsulting/claude-skill-foundry"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "homepage": null,
   "source_commit": "5e49df814225e1d33d63b52f49780175fd0a4ef2",
   "content_hash": "sha256:5c6b1646a7e845169642c667509afb4d7078b0a40170656e08ed28e161a322c1",

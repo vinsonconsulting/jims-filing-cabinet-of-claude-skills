@@ -63,8 +63,8 @@ Unicode width, streaming async output, and headless render tests with TestBacken
 Copy the skill folder into a place Claude reads skills.
 
 ```bash
-git clone https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
-cp -r jims-filing-cabinet-of-claude-skills/skills/tui/ratatui ~/.claude/skills/
+git clone https://github.com/vinsonconsulting/claude-skill-foundry
+cp -r claude-skill-foundry/skills/tui/ratatui ~/.claude/skills/
 ```
 
 Use `.claude/skills/` inside a project to scope it to one repo instead of your user.

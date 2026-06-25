@@ -63,8 +63,8 @@ and Widget, reactive attributes and their `watch_` methods, TCSS layout (`dock`,
 Copy the skill folder into a place Claude reads skills.
 
 ```bash
-git clone https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
-cp -r jims-filing-cabinet-of-claude-skills/skills/tui/textual ~/.claude/skills/
+git clone https://github.com/vinsonconsulting/claude-skill-foundry
+cp -r claude-skill-foundry/skills/tui/textual ~/.claude/skills/
 ```
 
 Use `.claude/skills/` inside a project to scope it to one repo instead of your user.

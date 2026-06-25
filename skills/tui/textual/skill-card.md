@@ -5,8 +5,8 @@ summary: Build and debug Python TUIs with Textual 8.x — App/Screen/Widget, rea
 owner: '@vinsonconsulting'
 repo:
   tier: public
-  url: https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
-license: MIT
+  url: https://github.com/vinsonconsulting/claude-skill-foundry
+license: Apache-2.0
 source_commit: 5e49df814225e1d33d63b52f49780175fd0a4ef2
 content_hash: sha256:a884ccbefc0a99dce11184e9e145e251d004245a8db4d244687a1ed7dcdbffd0
 description: 'Use this skill when building or debugging a Python terminal UI (TUI) with Textual (Textualize''s framework) — `App`/`Screen`/`Widget`, `compose()`, `reactive`/`watch_`, `@work` workers, Textual CSS / TCSS (`dock`, `grid`, `fr` units), widgets like `RichLog`, `Markdown`, `DataTable`, `Input`, `TextArea`, `Tree`, `ListView`; testing with `Pilot` / `pytest-textual-snapshot`; `textual serve` / Textual Web deploy; Rich renderables inside Textual; or streaming LLM/agent tokens into a terminal and agentic-CLI front-ends. Triggers: Textual, Textualize, TUI, terminal UI, `@work`, TCSS, `RichLog`, `query_one`, Pilot, `textual serve`. Writes current 8.x code, not stale pre-1.0 patterns. Not for: Rust TUIs (→ Ratatui sibling), Go TUIs (→ Bubble Tea sibling), plain non-interactive CLI output (Click/argparse/Typer) with no live UI, or agent-session orchestration / tmux multiplexing. Note: browser deploy via `textual serve` (the same Textual app served to a browser) IS in scope — a general React/HTML web-app request is not.'
@@ -76,7 +76,7 @@ updated: '2026-06-20'
 
 Build and debug Python TUIs with Textual 8.x — App/Screen/Widget, reactive attributes, TCSS layout, @work workers, Pilot tests, and textual serve.
 
-**Status:** beta | **License:** MIT | **Scan:** LOW (0/100)
+**Status:** beta | **License:** Apache-2.0 | **Scan:** LOW (0/100)
 
 ## When to use it
 

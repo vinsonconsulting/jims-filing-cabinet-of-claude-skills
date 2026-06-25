@@ -51,8 +51,8 @@ writes `.txt`, `.png`, or `.svg` through `scripts/image_to_ascii.py`.
 Copy the skill folder into a place Claude reads skills.
 
 ```bash
-git clone https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
-cp -r jims-filing-cabinet-of-claude-skills/skills/ascii-art/image-to-ascii ~/.claude/skills/
+git clone https://github.com/vinsonconsulting/claude-skill-foundry
+cp -r claude-skill-foundry/skills/ascii-art/image-to-ascii ~/.claude/skills/
 ```
 
 Use `.claude/skills/` inside a project to scope it to one repo instead of your user.

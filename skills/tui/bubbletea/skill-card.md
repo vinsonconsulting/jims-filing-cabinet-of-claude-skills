@@ -5,8 +5,8 @@ summary: Build current Bubble Tea v2 terminal UIs in Go on the charm.land import
 owner: '@vinsonconsulting'
 repo:
   tier: public
-  url: https://github.com/vinsonconsulting/jims-filing-cabinet-of-claude-skills
-license: MIT
+  url: https://github.com/vinsonconsulting/claude-skill-foundry
+license: Apache-2.0
 source_commit: 5136c9459165e3e4e62f0daad31045ba86bfd0dc
 content_hash: sha256:40a8ee72bb795a02d97a49e4ca3d6dd7d585b83c1d873a3718d69a7e88efeb24
 description: 'Use this skill when building a terminal UI (TUI) in Go with Bubble Tea and the Charm stack — the Elm Architecture / MVU pattern (`tea.Model` with `Init`/`Update`/`View`), `Cmd`/`Msg` event flow, Lip Gloss styling and layout, Bubbles components (`viewport`, `list`, `table`, `textinput`, `textarea`, `spinner`, `progress`), Glamour markdown rendering, and teatest for testing. Especially apt for streaming tokens from an LLM/agent into a terminal (goroutine → `p.Send` → `Update` → `viewport`), an agentic CLI, or any interactive full-screen or inline terminal app in Go. Targets v2 on the `charm.land/*/v2` import paths (Go 1.25+); writes current-version-correct code and avoids v1/beta patterns. Not for: Rust TUIs (→ Ratatui sibling), Python TUIs (→ Textual sibling), plain non-interactive CLI output (use `fmt`/`cobra`/standalone `lipgloss`), web/GUI UIs, or agent session orchestration / tmux / process multiplexing.'
@@ -83,7 +83,7 @@ updated: '2026-06-22'
 
 Build current Bubble Tea v2 terminal UIs in Go on the charm.land import paths — the Elm/MVU pattern, Lip Gloss, Bubbles, Glamour, streaming, and teatest.
 
-**Status:** beta | **License:** MIT | **Scan:** LOW (13/100)
+**Status:** beta | **License:** Apache-2.0 | **Scan:** LOW (13/100)
 
 ## When to use it
 
