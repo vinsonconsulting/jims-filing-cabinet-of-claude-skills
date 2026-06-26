@@ -17,6 +17,14 @@ Build and debug Python TUIs with Textual 8.x — App/Screen/Widget, reactive att
 
 <!-- card:end badges -->
 
+## Scorecard
+
+<!-- card:begin scorecard -->
+
+<img src="../../../assets/scorecards/tui/textual.svg" alt="textual scorecard" width="560">
+
+<!-- card:end scorecard -->
+
 ## What it does
 
 This skill builds and debugs Python TUIs with Textual 8.x. It covers App, Screen,

@@ -17,6 +17,14 @@ Write current, compiling Ratatui 0.30+ terminal UIs in Rust — render loop and 
 
 <!-- card:end badges -->
 
+## Scorecard
+
+<!-- card:begin scorecard -->
+
+<img src="../../../assets/scorecards/tui/ratatui.svg" alt="ratatui scorecard" width="560">
+
+<!-- card:end scorecard -->
+
 ## What it does
 
 This skill writes current Ratatui (0.30+) terminal UIs in Rust on crossterm. It

@@ -17,6 +17,14 @@ Build current Bubble Tea v2 terminal UIs in Go on the charm.land import paths â€
 
 <!-- card:end badges -->
 
+## Scorecard
+
+<!-- card:begin scorecard -->
+
+<img src="../../../assets/scorecards/tui/bubbletea.svg" alt="bubbletea scorecard" width="560">
+
+<!-- card:end scorecard -->
+
 ## What it does
 
 This skill writes Bubble Tea code for the current v2 release on the `charm.land`

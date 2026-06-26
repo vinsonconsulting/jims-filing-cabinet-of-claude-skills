@@ -126,6 +126,12 @@ That installs `bubbletea` for your user. There are three places it can live:
 
 ## Catalog
 
+<!-- SCORECARD:START -->
+
+<img src="assets/scorecard-rollup.svg" alt="skill scorecards rollup" width="560">
+
+<!-- SCORECARD:END -->
+
 Each category links to its own index; each skill links to its page. `Scan` is the
 SkillSpector severity and score, and `Trigger (P/R)` is the measured precision and
 recall once a skill has published metrics. Both columns read from each skill's

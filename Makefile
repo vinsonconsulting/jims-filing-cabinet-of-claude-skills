@@ -1,4 +1,4 @@
-.PHONY: lint index readmes check tools cards scan
+.PHONY: lint index readmes scorecards check tools cards scan
 
 # Every real skill: a SKILL.md, minus the template and any vendored mirror.
 SKILL_DIRS := $(shell find skills -name SKILL.md -not -path '*/_TEMPLATE/*' -not -path '*/vendor/*' -exec dirname {} \;)
@@ -21,10 +21,20 @@ readmes:
 	python3 scripts/build_index.py
 	python3 scripts/render_skill_readmes.py
 
-# Install the vendored Califa tooling (skillcard) + SkillSpector into the active
-# environment. Run once before `make check`; CI runs it as its own step.
+# Render every carded skill's SVG scorecard + the root rollup, and embed them in
+# the READMEs. Textual renders headless to a deterministic SVG, so committed
+# scorecards do not churn. The SVGs land in assets/ (NOT beside the card, which
+# would move its content_hash). This is an asset step, kept OUT of `make check`'s
+# correctness gate; CI regenerates and diffs as a drift guard. Needs the
+# scorecard extra (`make tools` installs it).
+scorecards:
+	python3 scripts/build_scorecards.py
+
+# Install the vendored Califa tooling (skillcard) + SkillSpector + the scorecard
+# renderer into the active environment. Run once before `make check`; CI runs it
+# as its own step.
 tools:
-	python3 -m pip install -e "tooling/califa[scan]"
+	python3 -m pip install -e "tooling/califa[scan,scorecard]"
 
 # For every skill: scan its text surface and gate the report. For carded skills,
 # also (a) schema/hash-validate the committed card, (b) rebuild the card from its

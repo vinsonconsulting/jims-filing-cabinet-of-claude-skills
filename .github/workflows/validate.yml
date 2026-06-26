@@ -25,6 +25,20 @@ jobs:
         run: make tools
       - name: Lint, scan, gate, validate cards, check index
         run: make check
+      - name: Scorecards in sync (asset drift + determinism guard)
+        # Asset step, separate from the make check correctness gate. Regenerate
+        # twice (the second pass re-proves the SVG export is deterministic), then
+        # fail if anything differs from what is committed -- i.e. a card.json
+        # changed without its scorecard being regenerated. make check above
+        # leaves only gitignored artifacts, so a clean diff here is exactly "no
+        # scorecard drift".
+        run: |
+          make scorecards
+          make scorecards
+          git diff --exit-code || {
+            echo "::error::scorecards are stale; run 'make scorecards' and commit the result";
+            exit 1;
+          }
       - name: Upload per-skill SARIF to the Security tab
         if: always()
         continue-on-error: true

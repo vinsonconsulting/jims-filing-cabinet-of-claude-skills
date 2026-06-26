@@ -17,6 +17,14 @@ Convert an image file to ASCII art from the command line with shape-aware glyph 
 
 <!-- card:end badges -->
 
+## Scorecard
+
+<!-- card:begin scorecard -->
+
+<img src="../../../assets/scorecards/ascii-art/image-to-ascii.svg" alt="image-to-ascii scorecard" width="560">
+
+<!-- card:end scorecard -->
+
 ## What it does
 
 This skill converts an image file to ASCII art from the command line. It matches
