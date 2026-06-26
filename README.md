@@ -132,7 +132,7 @@ That installs `bubbletea` for your user. There are three places it can live:
 
 <!-- SCORECARD:START -->
 
-<img src="assets/scorecard-rollup.svg" alt="skill scorecards rollup" width="560">
+<img src="assets/scorecard-rollup.svg" alt="skill cards rollup" width="640">
 
 <!-- SCORECARD:END -->
 

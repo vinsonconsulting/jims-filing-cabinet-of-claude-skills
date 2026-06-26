@@ -12,6 +12,14 @@ _Skill card pending. This skill ships a `SKILL.md` but has no published `card.js
 
 <!-- card:end badges -->
 
+## Skill card
+
+<!-- card:begin scorecard -->
+
+<img src="../../../assets/scorecards/ascii-art/ascii-img-react.svg" alt="ascii-img-react skill card" width="640">
+
+<!-- card:end scorecard -->
+
 ## What it does
 
 This skill renders an image as ASCII art in React through an `<AsciiImage>`

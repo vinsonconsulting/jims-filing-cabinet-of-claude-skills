@@ -12,6 +12,14 @@ _Skill card pending. This skill ships a `SKILL.md` but has no published `card.js
 
 <!-- card:end badges -->
 
+## Skill card
+
+<!-- card:begin scorecard -->
+
+<img src="../../../assets/scorecards/ascii-art/textmode-js.svg" alt="textmode-js skill card" width="640">
+
+<!-- card:end scorecard -->
+
 ## What it does
 
 This skill builds real-time textmode graphics in the browser with `textmode.js`, a

@@ -17,11 +17,11 @@ Build current Bubble Tea v2 terminal UIs in Go on the charm.land import paths â€
 
 <!-- card:end badges -->
 
-## Scorecard
+## Skill card
 
 <!-- card:begin scorecard -->
 
-<img src="../../../assets/scorecards/tui/bubbletea.svg" alt="bubbletea scorecard" width="560">
+<img src="../../../assets/scorecards/tui/bubbletea.svg" alt="bubbletea skill card" width="640">
 
 <!-- card:end scorecard -->
 

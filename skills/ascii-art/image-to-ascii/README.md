@@ -17,11 +17,11 @@ Convert an image file to ASCII art from the command line with shape-aware glyph 
 
 <!-- card:end badges -->
 
-## Scorecard
+## Skill card
 
 <!-- card:begin scorecard -->
 
-<img src="../../../assets/scorecards/ascii-art/image-to-ascii.svg" alt="image-to-ascii scorecard" width="560">
+<img src="../../../assets/scorecards/ascii-art/image-to-ascii.svg" alt="image-to-ascii skill card" width="640">
 
 <!-- card:end scorecard -->
 

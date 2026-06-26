@@ -17,11 +17,11 @@ Write current, compiling Ratatui 0.30+ terminal UIs in Rust — render loop and 
 
 <!-- card:end badges -->
 
-## Scorecard
+## Skill card
 
 <!-- card:begin scorecard -->
 
-<img src="../../../assets/scorecards/tui/ratatui.svg" alt="ratatui scorecard" width="560">
+<img src="../../../assets/scorecards/tui/ratatui.svg" alt="ratatui skill card" width="640">
 
 <!-- card:end scorecard -->
 

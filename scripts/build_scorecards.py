@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
-"""Render per-skill SVG scorecards + a root rollup, and embed them in READMEs.
+"""Render a per-skill SVG skill card for every skill + a root rollup, into READMEs.
 
-For every carded skill (`skills/<category>/<name>/card.json`) this renders a
-deterministic SVG via `skillcard.scorecard.render_card` and fills the per-skill
-README's `scorecard` markers with an `<img>` to it. It also renders an aggregate
-rollup from every card and fills the root README's `SCORECARD` markers.
+For each skill this renders a deterministic dark "skill card" SVG via
+`herocard.render` (identity, when-to-use, output, dependencies, quality, security)
+and fills the per-skill README's `scorecard` markers with an `<img>` to it. A
+carded skill (`card.json`) renders its real values; an un-carded skill (SKILL.md
+only) renders its name + when-to-use with the data sections marked "not yet
+carded", so all skills get a card with no invented data. It also renders an
+aggregate rollup from the carded cards and fills the root README's `SCORECARD`
+markers (via `skillcard.scorecard.render_rollup`).
 
-The SVGs live under `assets/scorecards/` (NOT beside the card): `scorecard.svg`
-is not in Califa's `content_hash` exclusion list, so writing it into the skill
-dir would move the skill's hash and break `make cards`. README files ARE
-hash-excluded, so embedding the `<img>` is safe. This mirrors how badges dodge
-the same trap by publishing outside the skill source.
+The SVGs live under `assets/scorecards/` (NOT beside the card): a card SVG is not
+in Califa's `content_hash` exclusion list, so writing it into the skill dir would
+move the skill's hash and break `make cards`. README files ARE hash-excluded, so
+embedding the `<img>` is safe.
 
 This is an asset step, not a correctness gate (`make check` does not run it).
 `--check` exits 1 on any drift (an SVG or a README block), so CI can
@@ -28,6 +31,7 @@ import sys
 from pathlib import Path
 
 import cardkit
+import herocard
 from skilltools import iter_skill_files, parse_frontmatter
 
 from schema.schema import SkillCard
@@ -71,20 +75,44 @@ def _svg_path(skill_dir: Path) -> Path:
     return ASSETS_DIR / _category_of(skill_dir) / f"{skill_dir.name}.svg"
 
 
-def carded_skills() -> list[tuple[str, Path, dict]]:
-    """(name, skill_dir, card) for every skill that has a card.json."""
-    out: list[tuple[str, Path, dict]] = []
+def _footer(card: dict) -> str:
+    """The card footer: the metrics harness if measured, else the scan provenance."""
+    metrics = card.get("metrics") or {}
+    if metrics.get("harness"):
+        return f"harness  {metrics['harness']}"
+    scan = card.get("scan")
+    if scan:
+        return f"scan  {scan.get('tool', '?')} · {scan.get('date', '')}"
+    return ""
+
+
+def all_skills() -> list[tuple[str, Path, dict, dict | None]]:
+    """(name, skill_dir, render_card, raw_card_or_None) for every skill.
+
+    ``render_card`` is the dict passed to herocard: the validated card.json for a
+    carded skill (plus a footer), or a sparse ``{name, status, description}`` built
+    from the SKILL.md frontmatter for an un-carded one. ``raw_card_or_None`` is the
+    card.json (for the rollup aggregate) or None.
+    """
+    out: list[tuple[str, Path, dict, dict | None]] = []
     for p in iter_skill_files(SKILLS_DIR):
         fm = parse_frontmatter(p.read_text(encoding="utf-8"))
         name = (fm.get("name") or p.parent.name).strip()
         card = cardkit.load_card(p.parent)
         if card is not None:
-            out.append((name, p.parent, card))
+            SkillCard.model_validate(card)
+            render = dict(card)
+            render["footer"] = _footer(card)
+            out.append((name, p.parent, render, card))
+        else:
+            render = {
+                "name": name,
+                "status": "draft",
+                "description": (fm.get("description") or "").strip(),
+                "footer": "SKILL.md only · card pending",
+            }
+            out.append((name, p.parent, render, None))
     return out
-
-
-def total_skill_count() -> int:
-    return sum(1 for _ in iter_skill_files(SKILLS_DIR))
 
 
 def build_summary(cards: list[dict], total: int) -> dict:
@@ -111,12 +139,12 @@ def build_summary(cards: list[dict], total: int) -> dict:
 
 
 def _embed(src_rel: str, alt: str) -> str:
-    return f'<img src="{src_rel}" alt="{alt}" width="560">'
+    return f'<img src="{src_rel}" alt="{alt}" width="640">'
 
 
 def run(check: bool) -> int:
-    skills = carded_skills()
-    total = total_skill_count()
+    skills = all_skills()
+    total = len(skills)
     changes: list[str] = []
 
     def apply(path: Path, new_text: str) -> None:
@@ -128,37 +156,37 @@ def run(check: bool) -> int:
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(new_text, encoding="utf-8")
 
-    # Per-skill: validate through the schema, render the SVG, embed it.
-    for name, skill_dir, card in skills:
-        SkillCard.model_validate(card)
+    # Per-skill: render the fuller card, embed it.
+    for name, skill_dir, render_card, _raw in skills:
         svg_path = _svg_path(skill_dir)
-        apply(svg_path, scorecard.render_card(card))
+        apply(svg_path, herocard.render(render_card))
         readme = skill_dir / README_NAME
         if readme.exists():
-            embed = _embed(_rel(svg_path, skill_dir), f"{name} scorecard")
+            embed = _embed(_rel(svg_path, skill_dir), f"{name} skill card")
             text = readme.read_text(encoding="utf-8")
             text = replace_between(text, *CARD_SCORECARD, f"\n{embed}\n")
             apply(readme, text)
 
-    # Root rollup.
-    summary = build_summary([c for _, _, c in skills], total)
+    # Root rollup, aggregated over the carded skills only.
+    carded = [raw for *_x, raw in skills if raw is not None]
+    summary = build_summary(carded, total)
     apply(ROLLUP_SVG, scorecard.render_rollup(summary))
     if README.exists():
-        embed = _embed(_rel(ROLLUP_SVG, ROOT), "skill scorecards rollup")
+        embed = _embed(_rel(ROLLUP_SVG, ROOT), "skill cards rollup")
         text = README.read_text(encoding="utf-8")
         text = replace_between(text, *ROOT_SCORECARD, f"\n{embed}\n")
         apply(README, text)
 
     if check:
         if changes:
-            print("Scorecards are out of date:")
+            print("Skill cards are out of date:")
             for c in changes:
                 print(f"  - {c}")
             print("Run: make scorecards")
             return 1
-        print("Scorecards are up to date.")
+        print("Skill cards are up to date.")
         return 0
-    print(f"Generated scorecards ({len(changes)} file(s) updated).")
+    print(f"Generated skill cards ({len(changes)} file(s) updated).")
     return 0
 
 

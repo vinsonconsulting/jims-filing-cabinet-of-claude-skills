@@ -17,11 +17,11 @@ Build and debug Python TUIs with Textual 8.x — App/Screen/Widget, reactive att
 
 <!-- card:end badges -->
 
-## Scorecard
+## Skill card
 
 <!-- card:begin scorecard -->
 
-<img src="../../../assets/scorecards/tui/textual.svg" alt="textual scorecard" width="560">
+<img src="../../../assets/scorecards/tui/textual.svg" alt="textual skill card" width="640">
 
 <!-- card:end scorecard -->
 
