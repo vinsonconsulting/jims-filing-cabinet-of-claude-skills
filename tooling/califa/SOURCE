@@ -1,30 +1,28 @@
 Vendored from: vinsonconsulting/califa-cards
-Commit:        036af88d9022b65f0d82542052a055f5abeff4ef  (v0.9.0)
-Tag:           v0.9.0
+Commit:        e0a302814725c73aa74ea25a7d911ad1964a6ce1  (v0.9.1)
+Tag:           v0.9.1
 Vendored on:   2026-06-26
 License:       Apache-2.0 (see ./LICENSE)
 
-Pin note: v0.9.0 adds the SVG scorecard renderer. skillcard.scorecard maps a
-card.json to a deterministic SVG (render_card for one skill, render_rollup for a
-corpus posture), rendered headless via Textual's export_screenshot, and
-`skillcard scorecard <skill-dir> --out PATH` writes it OUTSIDE the skill source —
-the --out guard refuses an in-source target, since scorecard.svg is NOT in the
-content_hash exclusion list and would otherwise move the skill's hash. The
-v0.8.0 -> v0.9.0 diff adds skillcard/scorecard.py and touches skillcard/cli.py
-plus pyproject (a new optional [scorecard] extra: textual==8.2.7, imported
-lazily so validate/gate/badges stay light); hashing.py / build_card.py /
-render.py / schema are unchanged, so this re-vendor moves no card content_hash.
-This vendored copy is byte-identical to the v0.9.0 tag with no cabinet-local
-deviation.
+Pin note: v0.9.1 is a cosmetic fix to the scorecard renderer — it drops the fake
+macOS terminal-window chrome (frame + title bar + traffic-light dots) that
+Textual's export_screenshot wraps around the SVG. scorecard.py now exports through
+Rich's Console.export_svg with a chrome-free code_format, so the card renders on
+its own border with no window decoration. The v0.9.0 -> v0.9.1 diff touches only
+skillcard/scorecard.py and the pyproject version; schema / hashing.py /
+build_card.py / render.py / cli.py are unchanged, so this re-vendor moves no card
+content_hash. It DOES change every committed scorecard SVG (the chrome is gone),
+regenerated via `make scorecards`. This vendored copy is byte-identical to the
+v0.9.1 tag with no cabinet-local deviation.
 
 This is a pinned copy of Califa's `schema/` + `skillcard/` packages (including
 the `skillcard.harness` subpackage, dormant here — `make check` never runs
 `skillcard eval`), plus the Jinja template and pyproject, so the public
 cabinet's `make check` can validate and gate skill cards without a private-repo
 CI secret. v0.8.0 enabled `skillcard badges` (consumed by the badge-serving CI
-job, .github/workflows/badges.yml); v0.9.0 adds `skillcard scorecard`, consumed
+job, .github/workflows/badges.yml); v0.9.0 added `skillcard scorecard`, consumed
 by `make scorecards` (scripts/build_scorecards.py) to render the per-skill and
-rollup SVGs embedded in the READMEs.
+rollup SVGs embedded in the READMEs; v0.9.1 cleans up those SVGs.
 
 Install:  python3 -m pip install -e "tooling/califa[scan,scorecard]"
 
