@@ -21,16 +21,16 @@
 [![last commit](https://img.shields.io/github/last-commit/vinsonconsulting/claude-skill-foundry)](https://github.com/vinsonconsulting/claude-skill-foundry/commits/main)
 [![repo size](https://img.shields.io/github/repo-size/vinsonconsulting/claude-skill-foundry)](https://github.com/vinsonconsulting/claude-skill-foundry)
 
-## What this is
+## What is This?
 
-This repo scores Claude Skills. Each carded skill ships a Skill Card that records
-how it scored: a SkillSpector security scan and a trigger eval, keyed to a content
-hash of the source. The catalog further down reads straight from those cards, so
-the numbers are generated rather than hand-typed, and the table cannot quietly
+This repo develops, scores, cards, and hosts Claude Skills. Each processed skill ships a Skill Card that records
+how it scored: a SkillSpector security scan and a set of evals (with a final Trigger eval), keyed to a content
+hash of the source. The catalog's eval numbers are generated rather than hand-typed, and the table cannot quietly
 drift away from the truth.
 
-New to skills? A skill is a folder. It holds a `SKILL.md` and whatever scripts,
-references, or assets that skill needs. Claude reads the description to decide when
+New to skills? If so, welcom to the party! A skill is a folder filled with useful information and tools for a specific task (like a physical tool bag assembled with one physical process in mind; e.g. locksmithing, PEX plumbing, RJ45 termination, etc.). 
+It holds a `SKILL.md` and whatever scripts,
+references, or assets that process might require. Claude (or another model) reads the description to decide when
 the skill applies, then follows the instructions inside. The folders carry no
 global state and no install step, so you copy one into your own setup and it works.
 
