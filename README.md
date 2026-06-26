@@ -1,9 +1,5 @@
 
 
-<p align="center">
-  <img src="assets/hero-card.svg" alt="The textual skill rendered as a Skill Card — identity, when-to-use, output, dependencies, quality metrics, and a LOW security scan" width="720">
-</p>
-
 <h1 align="center">claude-skill-foundry</h1>
 
 <p align="center">A scoring harness for Claude Skills. Each carded skill ships a Skill Card: a SkillSpector security scan and trigger evals, generated and gated in CI so the catalog can't drift from what was measured.</p>
@@ -24,6 +20,10 @@
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-2b7489)](CONTRIBUTING.md)
 [![last commit](https://img.shields.io/github/last-commit/vinsonconsulting/claude-skill-foundry)](https://github.com/vinsonconsulting/claude-skill-foundry/commits/main)
 [![repo size](https://img.shields.io/github/repo-size/vinsonconsulting/claude-skill-foundry)](https://github.com/vinsonconsulting/claude-skill-foundry)
+
+<p align="center">
+  <img src="assets/hero-card.svg" alt="The textual skill rendered as a Skill Card — identity, when-to-use, output, dependencies, quality metrics, and a LOW security scan" width="720">
+</p>
 
 ## What is This?
 
