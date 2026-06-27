@@ -48,12 +48,9 @@ Every carded skill carries a SkillSpector security scan: a static pass over the
 skill's text surface, run with no model calls, scored from 0 to 100 where a higher
 number means more risk. The gate maps that score to a band.
 
-| Band | Score | Gate |
-| --- | --- | --- |
-| LOW | 0 to 20 | Passes. |
-| MEDIUM | 21 to 50 | Passes only if every finding is recorded on the card as `accepted` with a written note. |
-| HIGH | 51 to 80 | Hard fail. Does not merge. |
-| CRITICAL | 81 to 100 | Hard fail. Does not merge. |
+<p align="center">
+  <img src="assets/readme-elements/score-bands.svg" alt="Score bands: LOW 0–20 passes; MEDIUM 21–50 passes only with every finding accepted and noted; HIGH 51–80 and CRITICAL 81–100 hard-fail and do not merge" width="800">
+</p>
 
 Lower is safer, and LOW is the cleanest result. Any single finding with CRITICAL
 severity fails the build on its own, whatever the total score.
@@ -78,13 +75,9 @@ are not carded yet.
 Here is what a scored skill looks like. `textual` builds and debugs Python TUIs
 with Textual 8.x.
 
-| Field | Value |
-| --- | --- |
-| Scan | LOW (0/100), no findings |
-| Permissions | shell, file (no network, env, or MCP) |
-| Dependencies | `textual>=8.2,<9`, `rich>=15.0`, `python>=3.9` |
-| Source | pinned to a `content_hash` of the skill folder |
-| Status | beta |
+<p align="center">
+  <img src="assets/readme-elements/worked-card.svg" alt="The textual skill at a glance — Scan LOW (0/100, no findings); Permissions shell + file; Dependencies textual/rich/python; Source pinned to a content_hash; Status beta" width="680">
+</p>
 
 The full card is at
 [`skills/tui/textual/skill-card.md`](skills/tui/textual/skill-card.md).
@@ -208,18 +201,9 @@ califa-cards is the standard; this repo is one corpus that exercises it.
 
 ## Repo layout
 
-```
-skills/<category>/<skill-name>/
-  SKILL.md            # required: frontmatter (name + description) + instructions
-  README.md           # this skill's page (card blocks rendered from card.json)
-  card.json           # the Skill Card: scan, triggers, metrics, provenance
-  skill-card.md       # human-readable view of the card
-  report.sarif        # SkillSpector findings
-  evals/              # trigger + functional eval cases
-  reference/          # optional: docs the skill points to
-  scripts/            # optional: helper scripts the skill runs
-  assets/             # optional: templates, fonts, samples
-```
+<p align="center">
+  <img src="assets/readme-elements/skill-layout.svg" alt="Skill folder layout: SKILL.md, README.md, card.json, skill-card.md, report.sarif, evals/, references/, scripts/, assets/" width="820">
+</p>
 
 Names are kebab-case and the folder name matches the skill's `name`. Folders under
 `skills/` that start with `_` (like `_TEMPLATE`) are ignored by the tooling.
